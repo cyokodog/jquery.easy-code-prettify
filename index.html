@@ -3,11 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Easy Code Prettify | jQuery Plugin :: Demo</title>
+<link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" >
 <link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
 <style>
+body{
+	padding-bottom: 640px;
+}
 h1{
+	font-family:Raleway;
 	text-transform:uppercase;
+}
+.lead{
+	font-family:Raleway;
 }
 .demo .col-md-6 > h4{
 	padding:8px;
@@ -15,6 +23,9 @@ h1{
 }
 .markdown{
 	height:300px;
+}
+.preview{
+	background:#fff;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -41,7 +52,9 @@ jQuery(function($){
 			$('div.preview').html(html)
 			$('a.run-prettify').on('click', function(){
 				$('div.preview').easyCodePrettify();
-				$(this).remove()
+				$(this).stop().slideUp(function(){
+$('.markup-area').css('background', '#ffffe0')
+				});
 				return false;
 			});
 			//opacity flash
@@ -71,7 +84,7 @@ jQuery(function($){
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://www.cyokodog.net/blog/easy-code-prettify-doc/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
-					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
+					<li><a href="https://github.com/cyokodog/jquery.easy-code-prettify" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
 				</ul>
 			</div>
 		</div>
@@ -97,7 +110,7 @@ jQuery(function($){
 		</div>
 	</div>
 	<div class="container" style="text-align:center;padding-top:1em;">
-		<a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a>
+		<a class="btn btn-lg btn-success run-prettify" href="#">RUN</a>
 	</div>
 	<div class="container">
 
@@ -134,7 +147,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
@@ -178,7 +191,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
@@ -227,7 +240,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
@@ -277,7 +290,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
@@ -326,7 +339,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
@@ -375,7 +388,7 @@ script
 	);
 </textarea>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 markup-area">
 			<h4>Markup </h4>
 			<div class="preview">
 			</div>
