@@ -2,13 +2,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Fage Page | jQuery Plugin :: Demo</title>
+<title>Easy Code Prettify | jQuery Plugin :: Demo</title>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" >
 <link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
-<link href="jquery.fade-page.css" rel="stylesheet" type="text/css" media="screen" >
 <style>
 h1{
 	text-transform:uppercase;
+}
+.demo .col-md-6 > h4{
+	padding:8px;
+	background:#f0f0f0;
 }
 .markdown{
 	height:300px;
@@ -38,8 +41,16 @@ jQuery(function($){
 			$('div.preview').html(html)
 			$('a.run-prettify').on('click', function(){
 				$('div.preview').easyCodePrettify();
+				$(this).remove()
 				return false;
 			});
+			//opacity flash
+			(function(target, opacity){
+			    var callee = arguments.callee;
+			    target.animate({opacity:opacity},1000,function(){
+			        callee(target, opacity == .5 ? 1 : .5);
+			    });
+			})($('a.run-prettify'));
 		}
 	});
 
@@ -59,7 +70,7 @@ jQuery(function($){
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://www.cyokodog.net/blog/fade-page-doc/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
+					<li><a href="http://www.cyokodog.net/blog/easy-code-prettify-doc/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
 					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
 				</ul>
 			</div>
@@ -68,7 +79,8 @@ jQuery(function($){
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Fade Page <small>:: jQuery SiteKit</small></h1>
+			<h1>Easy Code Prettify</h1>
+			<p class="lead">$( article ).easyCodePrettify();</p>
 			<div class="btn-group demo-index-group pull-right">
 				<button type="button" class="btn btn-default" data-toggle="dropdown">
 					<span>DEMO</span>
@@ -84,14 +96,58 @@ jQuery(function($){
 			</div>
 		</div>
 	</div>
-
+	<div class="container" style="text-align:center;padding-top:1em;">
+		<a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a>
+	</div>
 	<div class="container">
+
+<!----------------------------------------------------------- Demo -->
+<div class="demo">
+	<h3>コード表示</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Markdown</h4>
+<textarea class="markdown form-control" rows="27">
+css
+
+	.logo{
+	    text-align : center;
+	    font-size : 20px;
+	    opacity:.3;
+	    font-family:impact;
+	    color:#5588cc;
+	}
+
+html
+
+	<div class="logo">Design</div>
+
+script
+
+	$('div.logo').animate(
+	    {opacity:1, 'font-size':60,'margin-top':30}, 1500,
+	    function(){
+	        var t = $(this);
+	        var method = t.is(':hidden') ? 'fadeIn' : 'fadeOut';
+	        t[method](1500,arguments.callee);
+	    }
+	);
+</textarea>
+		</div>
+		<div class="col-md-6">
+			<h4>Markup </h4>
+			<div class="preview">
+			</div>
+		</div>
+	</div>
+</div>
+<!----------------------------------------------------------- Demo -->
 
 
 
 <!----------------------------------------------------------- Demo -->
 <div class="demo">
-	<h3>コード表示（個別）</h3>
+	<h3>コード表示（見出しをセット）</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<h4>Markdown</h4>
@@ -123,7 +179,7 @@ jQuery(function($){
 </textarea>
 		</div>
 		<div class="col-md-6">
-			<h4>Markup ⇒ <a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a></h4>
+			<h4>Markup </h4>
 			<div class="preview">
 			</div>
 		</div>
@@ -138,7 +194,7 @@ jQuery(function($){
 
 <!----------------------------------------------------------- Demo -->
 <div class="demo">
-	<h3>コード表示（グループ）</h3>
+	<h3>コード表示（グルーピング）</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<h4>Markdown</h4>
@@ -172,7 +228,7 @@ jQuery(function($){
 </textarea>
 		</div>
 		<div class="col-md-6">
-			<h4>Markup ⇒ <a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a></h4>
+			<h4>Markup </h4>
 			<div class="preview">
 			</div>
 		</div>
@@ -188,7 +244,7 @@ jQuery(function($){
 
 <!----------------------------------------------------------- Demo -->
 <div class="demo">
-	<h3>デモ実行</h3>
+	<h3>デモ実行（コード非表示）</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<h4>Markdown</h4>
@@ -222,7 +278,7 @@ jQuery(function($){
 </textarea>
 		</div>
 		<div class="col-md-6">
-			<h4>Markup ⇒ <a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a></h4>
+			<h4>Markup </h4>
 			<div class="preview">
 			</div>
 		</div>
@@ -271,7 +327,7 @@ jQuery(function($){
 </textarea>
 		</div>
 		<div class="col-md-6">
-			<h4>Markup ⇒ <a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a></h4>
+			<h4>Markup </h4>
 			<div class="preview">
 			</div>
 		</div>
@@ -320,7 +376,7 @@ jQuery(function($){
 </textarea>
 		</div>
 		<div class="col-md-6">
-			<h4>Markup ⇒ <a class="btn btn-success run-prettify" href="#">Easy Code Prettify を実行！</a></h4>
+			<h4>Markup </h4>
 			<div class="preview">
 			</div>
 		</div>

@@ -44,16 +44,14 @@
 				t.remove();
 			}
 		});
-//		c.target.find('> pre').wrap('<div/>').exCodePrettify();
 		c.target.find('> pre').each(function(){
-
 			var t = $(this), prev = t.prev();
 			var opt = {};
 			if(prev.prop('tagName') == c.codeTypeNode){
 				opt = {codeType : prev.text()}
+				prev.remove();
 			}
-			t.wrap('<div/>').exCodePrettify(opt);
-			prev.remove();
+			t.wrap('<div class="ex-code-prettify"/>').exCodePrettify(opt);
 		});
 	}
 	$.fn.easyCodePrettify = function(option){
