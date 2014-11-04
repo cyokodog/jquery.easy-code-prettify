@@ -16,19 +16,21 @@
 	var s = $.easyCodePrettify = function(target, option){
 		var o = this, c = o.config = $.extend({}, s.defaults, option);
 		c.target = $(target);
-//		var reg = RegExp('^(' + c.demoText + '|' + c.codeText + ')$');
 		var codeSection = c.target.find(c.codeNode).filter(function(){
 			return RegExp(c.demoText + '|' + c.codeText).test($(this).text());
 		});
 		codeSection.each(function(){
 			var t = $(this);
+			var noAuto = RegExp(c.noAutoText).test(t.text());
 			var code = [];
 			(function(t){
 				var callee = arguments.callee;
 				var next = t.next();
 				if(t.size() && next.size()){
 					if(t.prop('tagName') == c.codeTypeNode && next.prop('tagName') == 'PRE'){
-						next.attr('data-ex-code-prettify-param', '{codeType:"' + t.text() + '"}');
+						var codeType = t.text();
+						var autoRun = (codeType == 'script' && noAuto ? ',autoRun:false' : '');
+						next.attr('data-ex-code-prettify-param', '{codeType:"' + codeType + '"'+autoRun + '}');
 						t.remove();
 						code.push(next[0]);
 						callee(next.next());
@@ -36,11 +38,15 @@
 				}
 			})(t.next());
 			if(code.length) {
-				$(code).wrapAll('<div class="ex-code-prettify"/>').exCodePrettify({
+				var opt = $.extend({
 					showDemo: RegExp(c.demoText).test(t.text()),
 					showCode: RegExp(c.codeText).test(t.text()),
 					editCode: RegExp(c.editText).test(t.text())
-				});
+				}, (noAuto ? {
+					showRunButton : true,
+					showResetButton : true,
+				} : {}));
+				$(code).wrapAll('<div class="ex-code-prettify"/>').exCodePrettify(opt);
 				t.remove();
 			}
 		});
@@ -65,7 +71,8 @@
 			codeTypeNode : 'H5',
 			demoText : 'demo',
 			codeText : 'code',
-			editText : 'edit'
+			editText : 'edit',
+			noAutoText : 'noAuto'
 		},
 		id : 'easy-code-prettify'
 	});
