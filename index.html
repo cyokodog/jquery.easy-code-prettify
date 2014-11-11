@@ -401,6 +401,59 @@ script
 
 
 
+
+
+
+
+<!----------------------------------------------------------- Demo -->
+<div class="demo">
+	<h3>コード表示 ＋ デモ実行(手動) ＋ コード編集</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Markdown</h4>
+<textarea class="markdown form-control" rows="27">
+#### code + demo + edit + noAuto
+
+##### css
+
+	.logo{
+	    text-align : center;
+	    font-size : 20px;
+	    opacity:.3;
+	    font-family:impact;
+	    color:#5588cc;
+	}
+
+##### html
+
+	<div class="logo">Design</div>
+
+##### script
+
+	$('div.logo').animate(
+	    {opacity:1, 'font-size':60,'margin-top':30}, 1500,
+	    function(){
+	        var t = $(this);
+	        var method = t.is(':hidden') ? 'fadeIn' : 'fadeOut';
+	        t[method](1500,arguments.callee);
+	    }
+	);
+</textarea>
+		</div>
+		<div class="col-md-6 markup-area">
+			<h4>Markup </h4>
+			<div class="preview">
+			</div>
+		</div>
+	</div>
+</div>
+<!----------------------------------------------------------- Demo -->
+
+
+
+
+
+
 	</div>
 
 

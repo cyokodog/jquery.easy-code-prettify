@@ -67,11 +67,11 @@
 	}
 	$.extend(s, {
 		defaults : {
-			codeNode : 'H4',
-			codeTypeNode : 'H5',
-			demoText : 'demo',
-			codeText : 'code',
-			editText : 'edit',
+			codeNode : 'H4',	// グルーピングを指定する要素
+			codeTypeNode : 'H5',	// コード種別を指定する要素
+			demoText : 'demo',	// コード実行の判定テキスト
+			codeText : 'code',	// コード表示の判定テキスト
+			editText : 'edit',	// コード編集の判定テキスト
 			noAutoText : 'noAuto'
 		},
 		id : 'easy-code-prettify'
