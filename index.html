@@ -454,6 +454,61 @@ script
 
 
 
+
+
+<!----------------------------------------------------------- Demo -->
+<div class="demo">
+	<h3>コード表示 ＋ デモ実行(手動) ＋ コード編集</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Markdown</h4>
+<textarea class="markdown form-control" rows="27">
+#### code + demo + edit
+
+##### cssFile
+
+	http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-inplace-editor/jquery.ex-inplace-editor.css
+
+##### jsFile
+
+	http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-inplace-editor/jquery.ex-inplace-editor.js
+
+##### css
+
+	form{
+		padding: 16px;
+	}
+	input.inplace-editor,
+	a.ex-ipe-label{
+		padding: 4px;
+	}
+
+##### html
+
+	<form>
+		<input type="text" class="inplace-editor"/>
+	</form>
+
+##### script
+
+	$('input.inplace-editor').exInplaceEditor({
+		nullText : '編集する'
+	});
+</textarea>
+		</div>
+		<div class="col-md-6 markup-area">
+			<h4>Markup </h4>
+			<div class="preview">
+			</div>
+		</div>
+	</div>
+</div>
+<!----------------------------------------------------------- Demo -->
+
+
+
+
+
 	</div>
 
 

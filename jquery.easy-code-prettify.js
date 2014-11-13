@@ -72,7 +72,7 @@
 			demoText : 'demo',	// コード実行の判定テキスト
 			codeText : 'code',	// コード表示の判定テキスト
 			editText : 'edit',	// コード編集の判定テキスト
-			noAutoText : 'noAuto'
+			noAutoText : 'noAuto'	// 自動実行の判定テキスト
 		},
 		id : 'easy-code-prettify'
 	});
