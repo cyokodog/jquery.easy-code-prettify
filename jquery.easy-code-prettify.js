@@ -22,15 +22,20 @@
 		codeSection.each(function(){
 			var t = $(this);
 			var noAuto = RegExp(c.noAutoText).test(t.text());
+			var noReset = RegExp(c.noResetText).test(t.text());
 			var code = [];
 			(function(t){
 				var callee = arguments.callee;
 				var next = t.next();
 				if(t.size() && next.size()){
 					if(t.prop('tagName') == c.codeTypeNode && next.prop('tagName') == 'PRE'){
-						var codeType = t.text();
+//						var codeType = t.text();
+
+
+						var codeType = (t.text()+' ').match(/script |html |css |cssFile |jsFile /).toString().trim();
 						var autoRun = (codeType == 'script' && noAuto ? ',autoRun:false' : '');
-						next.attr('data-ex-code-prettify-param', '{codeType:"' + codeType + '"'+autoRun + '}');
+						var showCode = (t.text()+' ').match(/noCode /) == 'noCode ' ? ',showCode:false' : '';
+						next.attr('data-ex-code-prettify-param', '{codeType:"' + codeType + '"'+autoRun + showCode +'}');
 						t.remove();
 						code.push(next[0]);
 						callee(next.next());
@@ -44,7 +49,7 @@
 					editCode: RegExp(c.editText).test(t.text())
 				}, (noAuto ? {
 					showRunButton : true,
-					showResetButton : true,
+					showResetButton : !noReset
 				} : {}));
 				$(code).wrapAll('<div class="ex-code-prettify"/>').exCodePrettify(opt);
 				t.remove();
@@ -72,7 +77,8 @@
 			demoText : 'demo',	// コード実行の判定テキスト
 			codeText : 'code',	// コード表示の判定テキスト
 			editText : 'edit',	// コード編集の判定テキスト
-			noAutoText : 'noAuto'	// 自動実行の判定テキスト
+			noAutoText : 'noAuto',	// 自動実行の判定テキスト
+			noResetText : 'noReset'	// リセットボタン表示判定テキスト
 		},
 		id : 'easy-code-prettify'
 	});
