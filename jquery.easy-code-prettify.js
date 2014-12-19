@@ -1,5 +1,5 @@
 /*
- * 	Easy Code Prettify 0.1 - jQuery plugin
+ * 	Easy Code Prettify 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -29,9 +29,6 @@
 				var next = t.next();
 				if(t.size() && next.size()){
 					if(t.prop('tagName') == c.codeTypeNode && next.prop('tagName') == 'PRE'){
-//						var codeType = t.text();
-
-
 						var codeType = (t.text()+' ').match(/script |html |css |cssFile |jsFile /).toString().trim();
 						var autoRun = (codeType == 'script' && noAuto ? ',autoRun:false' : '');
 						var showCode = (t.text()+' ').match(/noCode /) == 'noCode ' ? ',showCode:false' : '';
